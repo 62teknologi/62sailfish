@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RabbitMQ Message Consumer</title>
+</head>
+<body>
+<h1>RabbitMQ Message Consumer</h1>
+<div id="message-container"></div>
+
+<script>
+  const messageContainer = document.getElementById('message-container');
+
+  function displayMessage(message) {
+    const newMessage = document.createElement('div');
+    newMessage.textContent = message;
+    messageContainer.appendChild(newMessage);
+  }
+
+  function consumeMessages() {
+    fetch('http://localhost:6001/api/v1/notifications/consume')
+            .then(response => {
+              const reader = response.body.getReader();
+              const decoder = new TextDecoder();
+
+              function read() {
+                return reader.read().then(({ done, value }) => {
+                  if (done) {
+                    return;
+                  }
+                  const message = decoder.decode(value);
+                  displayMessage(message);
+                  return read();
+                });
+              }
+
+              return read();
+            })
+            .catch(error => {
+              console.error('Failed to consume messages:', error);
+            });
+  }
+
+  consumeMessages();
+</script>
+</body>
+</html>

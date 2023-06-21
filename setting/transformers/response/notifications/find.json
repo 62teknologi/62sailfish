@@ -1,0 +1,30 @@
+{
+  "id": "",
+  "sender": "",
+  "recipient": "",
+  "category": "",
+  "title": "",
+  "body": "",
+  "template": "",
+  "status": "",
+  "created_at": "",
+  "updated_at": "",
+  "deleted_at": "",
+  "filterable": {
+    "id": "",
+    "sender": "",
+    "recipient": "",
+    "category": "",
+    "title": "",
+    "body": "",
+    "status": "",
+    "template": "",
+    "created_at": "",
+    "updated_at": "",
+    "deleted_at": ""
+  },
+  "searchable": ["title", "body"],
+  "sortable": {
+    "created_at": ""
+  }
+}

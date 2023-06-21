@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Selesaikan Pendaftaran</title>
+    <style>
+      @font-face {
+        font-family: "Nunito";
+        src: url("{{.HTTP_SERVER_ADDRESS}}/assets/fonts/Nunito-Regular.ttf");
+      }
+
+      .email_container {
+        font-family: "Nunito";
+      }
+
+      .email_container .title {
+        margin-top: 16px;
+        margin-bottom: 8px;
+        font-size: 18px;
+        line-height: 24px;
+        font-weight: 800;
+      }
+
+      .email_container .text {
+        font-size: 14px;
+        line-height: 24px;
+        color: #818385;
+      }
+
+      .email_container .font-extrabold {
+        font-weight: 800;
+      }
+
+      .email_container .button {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 16px;
+      }
+
+      .email_container .button a {
+        text-decoration: none;
+        background-color: #c5615e;
+        border-radius: 6px;
+        padding: 8px 16px;
+        border: none;
+        color: white;
+        font-size: 16px;
+        line-height: 21px;
+        font-weight: 500;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="email_container">
+      <div class="title">Yuk Selesaikan Pendaftaranmu</div>
+      <div class="text" style="margin-bottom: 8px">
+        Selamat Pagi Kak {{.name}}
+      </div>
+      <div class="text" style="margin-bottom: 16px">
+        Akunmu bentar lagi selesai lho, kamu udah bisa masuk ke website kami.
+        Tapi kamu harus sedikit lagi menyelesaikan pendaftaranmu. Gampang kok,
+        tinggal penuhi beberapa persyaratan aja. Kenapa? Biar semua mitra dapat
+        bekerja dengan asyik dan tetep profesional. Ini semua demi pengguna
+        layanan kita ini. Yuk jaga bareng pariwisata Indonesia.
+      </div>
+      <div class="button">
+        <a href="{{.url}}">Selesaikan Pendaftaran</a>
+      </div>
+      <div class="text" style="margin-bottom: 8px">
+        Caranya? Gampang banget kok, pejet aja tombol di atas itu tuh. Terus
+        selesaikan aja syarat-syaratnya. Habis itu kamu bakal bisa menikmati hal
+        yang menarik dan pastinya ngga bakalan kamu duga-duga sebelumnya. Ingat,
+        kita ditunggu calon pelancung dari seluruh dunia lho. Yuk Selesaikan
+        Pendaftaranmu!!!
+      </div>
+      <div class="text" style="margin-bottom: 8px">Salam Hangat Kami,</div>
+      <div class="text font-extrabold">ASITA</div>
+    </div>
+  </body>
+</html>

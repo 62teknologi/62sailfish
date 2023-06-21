@@ -1,0 +1,7 @@
+{
+  "data": "required",
+  "topic" : "required",
+  "image" : "",
+  "title" : "required",
+  "body" : "required"
+}

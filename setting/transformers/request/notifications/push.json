@@ -1,0 +1,9 @@
+{
+  "type": "required",
+  "recipient": "required",
+  "recipient_name": "required",
+  "title": "required",
+  "body": "required",
+  "template":"",
+  "template_params":""
+}

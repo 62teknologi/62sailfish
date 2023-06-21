@@ -1,0 +1,555 @@
+{
+	"info": {
+		"_postman_id": "861f6e49-0295-4497-862e-f0ec6966ab57",
+		"name": "Sailfish",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26338431"
+	},
+	"item": [
+		{
+			"name": "Notification",
+			"item": [
+				{
+					"name": "Get All",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "G6mpEa6X9yVfR4SdW8zUJbHtKcNqLo2T",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "test",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL_DEV}}/api/v1/notifications?page=1&per_page=10&sender=0&recipient=334&search=perbaiki Dokumenmu&category=&order_by=newest",
+							"host": [
+								"{{BASE_URL_DEV}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"notifications"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "per_page",
+									"value": "10"
+								},
+								{
+									"key": "sender",
+									"value": "0"
+								},
+								{
+									"key": "recipient",
+									"value": "334"
+								},
+								{
+									"key": "search",
+									"value": "perbaiki Dokumenmu"
+								},
+								{
+									"key": "category",
+									"value": ""
+								},
+								{
+									"key": "order_by",
+									"value": "newest"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get One",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "G6mpEa6X9yVfR4SdW8zUJbHtKcNqLo2T",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "test",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/v1/notifications/105",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"notifications",
+								"105"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "G6mpEa6X9yVfR4SdW8zUJbHtKcNqLo2T",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "test",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"sender\": 0,\n    \"recipient\": 123,\n    \"category\":\"dari_kami\",\n    \"title\":\"Selamat Datang\",\n    \"body\":\"Selamat bergabung bersama kami\",\n    \"template\":\"email_complete_registration.html\",\n    \"template_params\": {\n        \"name\":\"Dimas\",\n        \"message\": \"This is only for testing\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL_DEV}}/api/v1/notifications",
+							"host": [
+								"{{BASE_URL_DEV}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"notifications"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Push",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "G6mpEa6X9yVfR4SdW8zUJbHtKcNqLo2T",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "test",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"type\": \"google_pubsub\",\n    \"recipient\": \"dimasbagussusilo@gmail.com\",\n    \"recipient_name\":\"Dimas\",\n    \"title\": \"Testing\",\n    \"body\":\"only for testing\",    \n    \"template\":\"email_complete_registration.html\",\n    \"template_params\": {\n        \"name\":\"Dimas\",\n        \"message\": \"This is only for testing\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL_DEV}}/api/v1/notifications/push",
+							"host": [
+								"{{BASE_URL_DEV}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"notifications",
+								"push"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "G6mpEa6X9yVfR4SdW8zUJbHtKcNqLo2T",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "test",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\":\"read\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/v1/notifications/7",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"notifications",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "G6mpEa6X9yVfR4SdW8zUJbHtKcNqLo2T",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "test",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"sender\":3,\n    \"recipient\":4,\n    \"message\":\"Hello World\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/v1/notifications/39",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"notifications",
+								"39"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Push-Notification",
+			"item": [
+				{
+					"name": "Token Post",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "G6mpEa6X9yVfR4SdW8zUJbHtKcNqLo2T",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "test",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"os\": \"ios\",\n    \"token\": \"token\",\n    \"user_id\":123\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:6001/api/v1/token/push-token",
+							"host": [
+								"localhost"
+							],
+							"port": "6001",
+							"path": [
+								"api",
+								"v1",
+								"token",
+								"push-token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tokens\": [\n        \"djo4JIL1RfSL_IRz4g86p1:APA91bFSTaejlumnUVkwxKZPwDH7VzZKf6m1aUyr3MhbpD4I52gE6FgbK0qdPqWqiWsiS3kJDZhEoofQxHUDSOLwB_3MrqKcicCVMmxNLsfsRD-oO35GXfxA73UZRVVnFPsiFH4tOgw-\"\n    ],\n    \"title\": \"lol\",\n    \"body\": \"body\",\n    \"data\": {\n        \"params\": \"params\"\n        \n    },\n    \"image\": \"https://crowdbotics.ghost.io/content/images/size/w1000/2021/02/ReactNativeFeaturedImage.png\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:6001/api/v1/token/push-notifications",
+							"host": [
+								"localhost"
+							],
+							"port": "6001",
+							"path": [
+								"api",
+								"v1",
+								"token",
+								"push-notifications"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Subscribe Topic",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tokens\": [\n        \"djo4JIL1RfSL_IRz4g86p1:APA91bFSTaejlumnUVkwxKZPwDH7VzZKf6m1aUyr3MhbpD4I52gE6FgbK0qdPqWqiWsiS3kJDZhEoofQxHUDSOLwB_3MrqKcicCVMmxNLsfsRD-oO35GXfxA73UZRVVnFPsiFH4tOgw-\"\n    ],\n    \"topic\": \"TestingTopic\" \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:6001/api/v1/token/subscribe-topic",
+							"host": [
+								"localhost"
+							],
+							"port": "6001",
+							"path": [
+								"api",
+								"v1",
+								"token",
+								"subscribe-topic"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Unsubscribe Topic",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tokens\": [\n        \"djo4JIL1RfSL_IRz4g86p1:APA91bFSTaejlumnUVkwxKZPwDH7VzZKf6m1aUyr3MhbpD4I52gE6FgbK0qdPqWqiWsiS3kJDZhEoofQxHUDSOLwB_3MrqKcicCVMmxNLsfsRD-oO35GXfxA73UZRVVnFPsiFH4tOgw-\"\n    ],\n    \"topic\": \"blablablab\" \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:6001/api/v1/token/unsubscribe-topic",
+							"host": [
+								"localhost"
+							],
+							"port": "6001",
+							"path": [
+								"api",
+								"v1",
+								"token",
+								"unsubscribe-topic"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post Topic Notification",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"params\": \"params\"\n    },\n    \"topic\": \"TestingTopic\",\n    \"title\": \"lol\",\n    \"body\": \"body\",\n    \"image\": \"https://crowdbotics.ghost.io/content/images/size/w1000/2021/02/ReactNativeFeaturedImage.png\" \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:6001/api/v1/token/post-topic",
+							"host": [
+								"localhost"
+							],
+							"port": "6001",
+							"path": [
+								"api",
+								"v1",
+								"token",
+								"post-topic"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Health",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "G6mpEa6X9yVfR4SdW8zUJbHtKcNqLo2T",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "test",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL_DEV}}/api/v1/notifications?page=1&per_page=10&sender=0&recipient=334&search=perbaiki Dokumenmu&category=&order_by=newest",
+					"host": [
+						"{{BASE_URL_DEV}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"notifications"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "per_page",
+							"value": "10"
+						},
+						{
+							"key": "sender",
+							"value": "0"
+						},
+						{
+							"key": "recipient",
+							"value": "334"
+						},
+						{
+							"key": "search",
+							"value": "perbaiki Dokumenmu"
+						},
+						{
+							"key": "category",
+							"value": ""
+						},
+						{
+							"key": "order_by",
+							"value": "newest"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BASE_URL",
+			"value": "http://staging.be.sailfish-golang.62dev.org",
+			"type": "string"
+		},
+		{
+			"key": "BASE_URL_DEV",
+			"value": "http://localhost:6001",
+			"type": "string"
+		}
+	]
+}

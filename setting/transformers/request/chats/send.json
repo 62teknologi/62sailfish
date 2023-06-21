@@ -1,0 +1,6 @@
+{
+  "type": "required",
+  "recipient": "required",
+  "sender": "",
+  "message":"required"
+}

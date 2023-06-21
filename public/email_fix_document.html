@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perbaiki Dokumen</title>
+    <style>
+      @font-face {
+        font-family: "Nunito";
+        src: url("{{.HTTP_SERVER_ADDRESS}}/assets/fonts/Nunito-Regular.ttf");
+      }
+
+      .email_wrapper {
+        font-family: "Nunito";
+      }
+
+      .email_wrapper .title {
+        margin-top: 16px;
+        margin-bottom: 8px;
+        font-size: 18px;
+        line-height: 24px;
+        font-weight: 800;
+      }
+
+      .email_wrapper .text {
+        font-size: 14px;
+        line-height: 24px;
+        color: #818385;
+      }
+
+      .email_wrapper .font-extrabold {
+        font-weight: 800;
+      }
+
+      .email_wrapper .button {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 16px;
+      }
+
+      .email_wrapper .button a {
+        text-decoration: none;
+        background-color: #c5615e;
+        border-radius: 6px;
+        padding: 8px 16px;
+        border: none;
+        color: white;
+        font-size: 16px;
+        line-height: 21px;
+        font-weight: 500;
+      }
+    </style>
+  </head>
+  <body class="email_container">
+    <div class="email_wrapper">
+      <div class="title">Perbaiki Dokumenmu</div>
+      <div class="text" style="margin-bottom: 8px">Selamat Pagi {{.name}},</div>
+      <div class="text" style="margin-bottom: 16px">
+        Mohon perbaiki dokumen yang telah kamu unggah. Nanti kami verifikasi
+        lagi.
+      </div>
+      <div class="button">
+        <a href="{{.url}}">Perbaiki Dokumen</a>
+      </div>
+      <div class="text" style="margin-bottom: 8px">Salam Hangat Kami,</div>
+      <div class="text font-extrabold">ASITA</div>
+    </div>
+  </body>
+</html>
