@@ -37,7 +37,12 @@ type ResponseTopic struct {
 func (ctrl *Firebase) PostToken(ctx *gin.Context) {
 	ctrl.Init(ctx)
 
-	transformer, _ := utils.JsonFileParser("setting/transformers/request/" + ctrl.Table + "/create.json")
+	transformer, err := utils.JsonFileParser("setting/transformers/request/" + ctrl.Table + "/create.json")
+	if err != nil {
+		ctx.JSON(http.StatusInternalServerError, utils.ResponseData("error", err.Error(), nil))
+		return
+	}
+
 	var input map[string]any
 
 	if err := ctx.BindJSON(&input); err != nil {
@@ -70,7 +75,13 @@ func (ctrl *Firebase) PostToken(ctx *gin.Context) {
 
 func (ctrl *Firebase) PushNotification(ctx *gin.Context) {
 	ctrl.Init(ctx)
-	transformer, _ := utils.JsonFileParser("setting/transformers/request/" + ctrl.Table + "/send.json")
+
+	transformer, err := utils.JsonFileParser("setting/transformers/request/" + ctrl.Table + "/send.json")
+	if err != nil {
+		ctx.JSON(http.StatusInternalServerError, utils.ResponseData("error", err.Error(), nil))
+		return
+	}
+
 	var input map[string]any
 
 	if err := ctx.BindJSON(&input); err != nil {
@@ -94,7 +105,7 @@ func (ctrl *Firebase) PushNotification(ctx *gin.Context) {
 	token, errToken := input["token"]
 
 	var firebaseAdapter interfaces.FirebasePushNotification
-	firebaseAdapter, err := fcm.NewFirebaseNotificationAdapter()
+	firebaseAdapter, err = fcm.NewFirebaseNotificationAdapter()
 
 	if err != nil {
 		ctx.JSON(http.StatusBadRequest, utils.ResponseData("error", "Something went wrong on connect to firebase", nil))
@@ -146,7 +157,13 @@ func (ctrl *Firebase) PushNotification(ctx *gin.Context) {
 
 func (ctrl *Firebase) SubscribeTopic(ctx *gin.Context) {
 	ctrl.Init(ctx)
-	transformer, _ := utils.JsonFileParser("setting/transformers/request/" + ctrl.Table + "/subscribe.json")
+
+	transformer, err := utils.JsonFileParser("setting/transformers/request/" + ctrl.Table + "/subscribe.json")
+	if err != nil {
+		ctx.JSON(http.StatusInternalServerError, utils.ResponseData("error", err.Error(), nil))
+		return
+	}
+
 	var input map[string]any
 
 	if err := ctx.BindJSON(&input); err != nil {
@@ -165,7 +182,7 @@ func (ctrl *Firebase) SubscribeTopic(ctx *gin.Context) {
 	val, errTokens := input["tokens"]
 
 	var firebaseAdapter interfaces.FirebasePushNotification
-	firebaseAdapter, err := fcm.NewFirebaseNotificationAdapter()
+	firebaseAdapter, err = fcm.NewFirebaseNotificationAdapter()
 
 	if err != nil {
 		ctx.JSON(http.StatusBadRequest, utils.ResponseData("error", "Something went wrong on connect to firebase", nil))
@@ -206,7 +223,13 @@ func (ctrl *Firebase) SubscribeTopic(ctx *gin.Context) {
 
 func (ctrl *Firebase) UnsubscribeTopic(ctx *gin.Context) {
 	ctrl.Init(ctx)
-	transformer, _ := utils.JsonFileParser("setting/transformers/request/" + ctrl.Table + "/subscribe.json")
+
+	transformer, err := utils.JsonFileParser("setting/transformers/request/" + ctrl.Table + "/subscribe.json")
+	if err != nil {
+		ctx.JSON(http.StatusInternalServerError, utils.ResponseData("error", err.Error(), nil))
+		return
+	}
+
 	var input map[string]any
 
 	if err := ctx.BindJSON(&input); err != nil {
@@ -225,7 +248,7 @@ func (ctrl *Firebase) UnsubscribeTopic(ctx *gin.Context) {
 	val, errTokens := input["tokens"]
 
 	var firebaseAdapter interfaces.FirebasePushNotification
-	firebaseAdapter, err := fcm.NewFirebaseNotificationAdapter()
+	firebaseAdapter, err = fcm.NewFirebaseNotificationAdapter()
 
 	if err != nil {
 		ctx.JSON(http.StatusBadRequest, utils.ResponseData("error", "Something went wrong on connect to firebase", nil))
@@ -266,7 +289,13 @@ func (ctrl *Firebase) UnsubscribeTopic(ctx *gin.Context) {
 
 func (ctrl *Firebase) PushTopicNotification(ctx *gin.Context) {
 	ctrl.Init(ctx)
-	transformer, _ := utils.JsonFileParser("setting/transformers/request/" + ctrl.Table + "/post_topic.json")
+
+	transformer, err := utils.JsonFileParser("setting/transformers/request/" + ctrl.Table + "/post_topic.json")
+	if err != nil {
+		ctx.JSON(http.StatusInternalServerError, utils.ResponseData("error", err.Error(), nil))
+		return
+	}
+
 	var input map[string]any
 
 	if err := ctx.BindJSON(&input); err != nil {
@@ -283,7 +312,7 @@ func (ctrl *Firebase) PushTopicNotification(ctx *gin.Context) {
 	utils.MapNullValuesRemover(transformer)
 
 	var firebaseAdapter interfaces.FirebasePushNotification
-	firebaseAdapter, err := fcm.NewFirebaseNotificationAdapter()
+	firebaseAdapter, err = fcm.NewFirebaseNotificationAdapter()
 
 	if err != nil {
 		ctx.JSON(http.StatusBadRequest, utils.ResponseData("error", "Something went wrong on connect to firebase", nil))

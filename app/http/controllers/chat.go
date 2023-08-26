@@ -36,7 +36,12 @@ func (ctrl *Chat) Send(ctx *gin.Context) {
 		return
 	}
 
-	transformer, _ := utils.JsonFileParser("setting/transformers/request/" + ctrl.Table + "/send.json")
+	transformer, err := utils.JsonFileParser("setting/transformers/request/" + ctrl.Table + "/send.json")
+	if err != nil {
+		ctx.JSON(http.StatusInternalServerError, utils.ResponseData("error", err.Error(), nil))
+		return
+	}
+
 	var input map[string]any
 	if err := ctx.BindJSON(&input); err != nil {
 		ctx.JSON(http.StatusBadRequest, utils.ResponseData("error", err.Error(), nil))

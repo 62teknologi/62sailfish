@@ -110,7 +110,13 @@ func (ctrl *Notification) Find(ctx *gin.Context) {
 
 	value := map[string]any{}
 	columns := []string{ctrl.Table + ".*"}
-	transformer, _ := utils.JsonFileParser("setting/transformers/response/" + ctrl.Table + "/find.json")
+
+	transformer, err := utils.JsonFileParser("setting/transformers/response/" + ctrl.Table + "/find.json")
+	if err != nil {
+		ctx.JSON(http.StatusInternalServerError, utils.ResponseData("error", err.Error(), nil))
+		return
+	}
+
 	query := utils.DB.Table(ctrl.Table)
 
 	utils.SetBelongsTo(query, transformer, &columns)
@@ -151,7 +157,13 @@ func (ctrl *Notification) FindAll(ctx *gin.Context) {
 
 	values := []map[string]any{}
 	columns := []string{ctrl.Table + ".*"}
-	transformer, _ := utils.JsonFileParser("setting/transformers/response/" + ctrl.Table + "/find.json")
+
+	transformer, err := utils.JsonFileParser("setting/transformers/response/" + ctrl.Table + "/find.json")
+	if err != nil {
+		ctx.JSON(http.StatusInternalServerError, utils.ResponseData("error", err.Error(), nil))
+		return
+	}
+
 	query := utils.DB.Table(ctrl.Table + "")
 	filter := utils.SetFilterByQuery(query, transformer, ctx)
 	filter["search"] = utils.SetGlobalSearch(query, transformer, ctx)
@@ -192,7 +204,12 @@ func (ctrl *Notification) Create(ctx *gin.Context) {
 		return
 	}
 
-	transformer, _ := utils.JsonFileParser("setting/transformers/request/" + ctrl.Table + "/create.json")
+	transformer, err := utils.JsonFileParser("setting/transformers/request/" + ctrl.Table + "/create.json")
+	if err != nil {
+		ctx.JSON(http.StatusInternalServerError, utils.ResponseData("error", err.Error(), nil))
+		return
+	}
+
 	var input map[string]any
 
 	if err := ctx.BindJSON(&input); err != nil {
@@ -265,11 +282,16 @@ func (ctrl *Notification) Push(ctx *gin.Context) {
 
 	loadedConfig, err := config.LoadConfig(".")
 	if err != nil {
-		fmt.Printf("cannot load loadedConfig: %w", err)
+		ctx.JSON(http.StatusInternalServerError, utils.ResponseData("error", err.Error(), nil))
 		return
 	}
 
-	transformer, _ := utils.JsonFileParser("setting/transformers/request/" + ctrl.Table + "/send.json")
+	transformer, err := utils.JsonFileParser("setting/transformers/request/" + ctrl.Table + "/push.json")
+	if err != nil {
+		ctx.JSON(http.StatusInternalServerError, utils.ResponseData("error", err.Error(), nil))
+		return
+	}
+
 	var input map[string]any
 
 	if err := ctx.BindJSON(&input); err != nil {
@@ -357,7 +379,12 @@ func (ctrl *Notification) Consume(ctx *gin.Context) {
 func (ctrl *Notification) Update(ctx *gin.Context) {
 	ctrl.Init(ctx)
 
-	transformer, _ := utils.JsonFileParser("setting/transformers/request/" + ctrl.Table + "/update.json")
+	transformer, err := utils.JsonFileParser("setting/transformers/request/" + ctrl.Table + "/update.json")
+	if err != nil {
+		ctx.JSON(http.StatusInternalServerError, utils.ResponseData("error", err.Error(), nil))
+		return
+	}
+
 	var input map[string]any
 
 	if err := ctx.BindJSON(&input); err != nil {
